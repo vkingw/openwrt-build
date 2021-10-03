@@ -63,7 +63,6 @@ jobs:
         git clone https://github.com/kenzok8/small.git
         git clone https://github.com/kenzok8/openwrt-packages.git
         git clone https://github.com/vernesong/OpenClash.git
-        cd ...
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     # - name: Load custom feeds
