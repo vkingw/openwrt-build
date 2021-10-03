@@ -91,6 +91,9 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         cp -r luci-app-flowoffload openwrt/package
         cp -r openwrt-fullconenat openwrt/package
+        mkdir -p /workdir/openwrt/staging_dir/host/bin
+        cp /usr/bin/upx /workdir/openwrt/staging_dir/host/bin/
+        cp /usr/bin/upx-ucl /workdir/openwrt/staging_dir/host/bin/
         cd openwrt
 
     - name: SSH connection to Actions
