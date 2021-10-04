@@ -39,7 +39,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@mac-build
+      uses: actions/checkout@main
 
     - name: Initialization environment
       env:
