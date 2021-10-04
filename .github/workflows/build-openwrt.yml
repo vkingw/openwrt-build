@@ -59,7 +59,6 @@ jobs:
         git clone https://github.com/kenzok8/small.git
         git clone https://github.com/kenzok8/openwrt-packages.git
         git clone https://github.com/vernesong/OpenClash.git
-        ln -sf ~/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     # - name: Load custom feeds
     #   run: |
@@ -69,7 +68,9 @@ jobs:
     #     $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds
-      run: cd openwrt && ./scripts/feeds update -a
+      run: |
+        df -h
+        cd openwrt && ./scripts/feeds update -a
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
