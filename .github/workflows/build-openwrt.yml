@@ -46,14 +46,10 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         brew install coreutils findutils gawk grep gnu-getopt gnu-tar wget diffutils git-extras quilt make ncurses pkg-config upx
-        mkdir -p ~/workdir
-        ls -al
 
     - name: Clone source code
-      working-directory: ~/workdir
       run: |
         df -h
-        ls -al
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         cd ./openwrt/package
         git clone https://github.com/kenzok8/small.git
