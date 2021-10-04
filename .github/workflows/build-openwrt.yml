@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt
+name: Build OpenWrt By macOS
 
 on:
   repository_dispatch:
@@ -35,22 +35,18 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: macos-11
 
     steps:
     - name: Checkout
-      uses: actions/checkout@main
+      uses: actions/checkout@mac-build
 
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
-        sudo timedatectl set-timezone "$TZ"
+        brew install coreutils findutils gawk grep gnu-getopt gnu-tar wget diffutils git-extras quilt make ncurses pkg-config upx
+        sudo systemsetup -gettimezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
@@ -107,7 +103,6 @@ jobs:
       id: package
       run: |
         cd openwrt
-        make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
