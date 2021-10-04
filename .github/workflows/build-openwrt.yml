@@ -47,8 +47,7 @@ jobs:
       run: |
         brew install coreutils findutils gawk grep gnu-getopt gnu-tar wget diffutils git-extras quilt make ncurses pkg-config upx
         sudo systemsetup -settimezone "$TZ"
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS ~/workdir
+        mkdir -p ~/workdir
 
     - name: Clone source code
       working-directory: ~/workdir
