@@ -62,7 +62,9 @@ jobs:
         cd ./openwrt/package
         git clone https://github.com/kenzok8/small.git
         git clone https://github.com/kenzok8/openwrt-packages.git
+        rm -rvf openwrt-packages/luci-app-openclash
         git clone https://github.com/vernesong/OpenClash.git
+        cp -rf OpenClash/luci-app-openclash openwrt-packages/
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     # - name: Load custom feeds
@@ -107,7 +109,7 @@ jobs:
       id: package
       run: |
         cd openwrt
-        make defconfig
+#        make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
