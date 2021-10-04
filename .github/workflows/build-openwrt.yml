@@ -85,8 +85,6 @@ jobs:
         cp -r luci-app-flowoffload openwrt/package
         cp -r openwrt-fullconenat openwrt/package
         mkdir -p ~/openwrt/staging_dir/host/bin
-        cp /usr/bin/upx ~/openwrt/staging_dir/host/bin/
-        cp /usr/bin/upx-ucl ~/openwrt/staging_dir/host/bin/
         cd openwrt
 
     - name: SSH connection to Actions
