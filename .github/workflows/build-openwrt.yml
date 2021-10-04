@@ -52,7 +52,8 @@ jobs:
     - name: Clone source code
       working-directory: ~/workdir
       run: |
-        df -h $PWD
+        PWD
+        df -h
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         cd ./openwrt/package
         git clone https://github.com/kenzok8/small.git
