@@ -46,12 +46,12 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         brew install coreutils findutils gawk grep gnu-getopt gnu-tar wget diffutils git-extras quilt make ncurses pkg-config upx
-        sudo systemsetup -gettimezone "$TZ"
+        sudo systemsetup -settimezone "$TZ"
         sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+        sudo chown $USER:$GROUPS ~/workdir
 
     - name: Clone source code
-      working-directory: /workdir
+      working-directory: ~/workdir
       run: |
         df -h $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
