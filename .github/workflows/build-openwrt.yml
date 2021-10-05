@@ -46,6 +46,13 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         brew install coreutils findutils gawk grep gnu-getopt gnu-tar wget diffutils git-extras quilt make ncurses pkg-config upx
+        PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+        PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+        PATH="/usr/local/opt/gettext/bin:$PATH"
+        PATH="/usr/local/opt/coreutils/bin:$PATH"
+        PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+        PATH="/usr/local/opt/upx/bin:$PATH"
+        export PATH
 
     - name: Clone source code
       run: |
