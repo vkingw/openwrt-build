@@ -52,6 +52,7 @@ jobs:
         PATH="/usr/local/opt/coreutils/bin:$PATH"
         PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
         export PATH
+        echo $PATH
 
     - name: Clone source code
       run: |
